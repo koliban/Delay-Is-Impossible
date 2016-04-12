@@ -3,10 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:paddingLeft="9dp"
     android:paddingRight="9dp"
-    android:background="@drawable/repeat_bg">
+    android:background="@drawable/bg_repeating_line">
 
     <ListView
         android:id="@+id/alarm_list"
@@ -19,6 +20,7 @@
         android:id="@+id/btn_add_alarm"
         android:src="@drawable/ic_add_white_48dp"
         android:layout_width="wrap_content"
+        app:backgroundTint="@color/fabColor"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:layout_marginBottom="20dp"/>

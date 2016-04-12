@@ -1,10 +1,12 @@
-package com.thefat.lingjunqi.getup;
+package com.thefat.lingjunqi.getup.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.thefat.lingjunqi.getup.Alarm;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

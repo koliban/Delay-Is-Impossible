@@ -11,14 +11,17 @@
 
         <activity
             android:name=".Activity.AlarmActivity"
-            android:label="@string/label_name">
+            android:label="@string/alarm_activity_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".Activity.AlarmPreferencesActivity"/>
+        <activity android:name=".Activity.AlarmPreferencesActivity"
+            android:label="@string/alarm_preferences_activity_name">
+
+        </activity>
 
     </application>
 
