@@ -4,6 +4,23 @@
     <string name="alarm_activity_name">Delay is Impossible</string>
     <string name="alarm_preferences_activity_name">设置</string>
 
-    
-    <string name="repeating_days_for_preview">周日,周一,周二,周四,周五,周六</string>
+    <string name="tv_stop_alarm_difficulty">停止闹钟难度</string>
+    <string name="tv_alarm_type">闹钟类型</string>
+    <string name="tv_alarm_tone">闹钟音乐</string>
+    <string name="tv_alarm_volume">闹钟音量</string>
+    <string name="tv_stop_alarm_way">关闭方式</string>
+    <string name="tv_alarm_time">闹钟时间</string>
+    <string name="tv_supervisor_number">监督人号码</string>
+
+    <string name="radio_btn_difficult_text">难</string>
+    <string name="radio_btn_medium_text">中</string>
+    <string name="radio_btn_easy_text">易</string>
+    <string name="radio_btn_math_to_stop_text">数学计算</string>
+    <string name="radio_btn_shake_to_stop_text">摇动手机</string>
+
+
+    <string name="tv_alarm_time_for_preview">12:00</string>
+    <string name="tv_repeating_days_for_preview">周日,周一,周二,周四,周五,周六</string>
+    <string name="tv_alarm_tone_for_preview">跟随系统</string>
+
 </resources>

@@ -25,20 +25,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/iv_alarm_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
                         android:layout_marginBottom="18dp"
                         android:layout_marginTop="18dp"
-                        android:text="12:00"
-                        android:textSize="69dp"/>
+                        android:text="@string/tv_alarm_time_for_preview"
+                        android:textSize="69sp"/>
 
                     <android.support.v7.widget.SwitchCompat
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
@@ -52,30 +54,34 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/iv_alarm_days"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
-                        android:text="@string/repeating_days_for_preview"
-                        android:textSize="16dp"/>
+                        android:text="@string/tv_repeating_days_for_preview"
+                        android:textSize="16sp"/>
 
-                    <ImageView
+                    <android.support.v7.widget.AppCompatImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@+id/iv_vibration"
+                        android:layout_toStartOf="@+id/iv_vibration"
                         android:background="#FFFFFF"
                         android:src="@drawable/ic_ring_blue_36dp"/>
 
-                    <ImageView
+                    <android.support.v7.widget.AppCompatImageView
                         android:id="@+id/iv_vibration"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="7dp"
+                        android:layout_marginStart="7dp"
                         android:background="#FFFFFF"
                         android:src="@drawable/ic_vibration_blue_36dp"/>
 

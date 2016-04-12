@@ -204,4 +204,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 		menuInflater.inflate(R.menu.menu, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
+
+
 }

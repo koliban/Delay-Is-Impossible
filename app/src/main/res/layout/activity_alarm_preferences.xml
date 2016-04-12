@@ -5,67 +5,268 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="30dp">
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
 
     <RelativeLayout
+        android:id="@+id/set_alarm_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_marginTop="30dp"
+        android:foreground="?attr/selectableItemBackground">
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:text="闹钟名称"/>
+            android:layout_alignParentStart="true"
+            android:text="@string/tv_alarm_time"
+            android:textColor="@color/textSecondary"
+            android:textSize="18sp"/>
 
-        <EditText
+        <android.support.v7.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:hint="请输入闹钟名称"/>
+            android:src="@drawable/ic_alarm_add_black_36dp"/>
     </RelativeLayout>
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.5dp"
         android:background="@color/colorDivider"/>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_marginTop="30dp">
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="闹钟类型"/>
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/tv_stop_alarm_way"
+            android:textColor="@color/textSecondary"
+            android:textSize="18sp"/>
 
-        <Button
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/radio_btn_math_to_stop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/radio_btn_math_to_stop_text"
+                android:textColor="@color/textSecondary"/>
+
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/radio_btn_shake_to_stop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/radio_btn_shake_to_stop_text"
+                android:textColor="@color/textSecondary"/>
+        </RadioGroup>
+    </RelativeLayout>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorDivider"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_alarm_type"
+            android:textColor="@color/textSecondary"
+            android:textSize="18sp"/>
+
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/tg_btn_ring"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_toLeftOf="@+id/tg_btn_vibration"
+            android:layout_toLeftOf="@+id/btn_vibration"
+            android:layout_toStartOf="@+id/btn_vibration"
             android:background="@drawable/ic_ring_blue_36dp"
-            />
+            android:foreground="?attr/selectableItemBackground"/>
 
-        <Button
-            android:id="@+id/tg_btn_vibration"
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_vibration"
             android:layout_width="36dp"
             android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginLeft="13dp"
-            android:background="@drawable/ic_vibration_blue_36dp"/>
+            android:layout_marginStart="13dp"
+            android:background="@drawable/ic_vibration_blue_36dp"
+            android:foreground="?attr/selectableItemBackground"/>
     </RelativeLayout>
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.5dp"
         android:background="@color/colorDivider"/>
 
-    <android.support.v7.widget.SwitchCompat
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
-    </android.support.v7.widget.SwitchCompat>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
 
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/tv_stop_alarm_difficulty"
+            android:textColor="@color/textSecondary"
+            android:textSize="18sp"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/radio_btn_difficult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/radio_btn_difficult_text"
+                android:textColor="@color/textSecondary"/>
+
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/radio_btn_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/radio_btn_medium_text"
+                android:textColor="@color/textSecondary"/>
+
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/radio_btn_easy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_btn_easy_text"
+                android:textColor="@color/textSecondary"/>
+        </RadioGroup>
+    </RelativeLayout>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorDivider"/>
+
+
+    <RelativeLayout
+        android:id="@+id/tone_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:paddingBottom="5dp">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/tv_alarm_tone"
+            android:textColor="@color/textSecondary"
+            android:textSize="18sp"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/tv_alarm_tone_for_preview"
+            android:textColor="@color/textSecondary"
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorDivider"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/tv_alarm_volume"
+            android:textColor="@color/textSecondary"
+            android:textSize="18sp"/>
+
+        <android.support.v7.widget.AppCompatSeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+
+            />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorDivider"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:foreground="?attr/selectableItemBackground">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/tv_supervisor_number"
+            android:textColor="@color/textSecondary"
+            android:textSize="18sp"/>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_contact_mail_black_36dp"/>
+    </RelativeLayout>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorDivider"/>
 </LinearLayout>
