@@ -1,6 +1,7 @@
 package com.thefat.lingjunqi.getup.Activity;
 
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
@@ -41,6 +42,17 @@ public abstract class BaseActivity extends AppCompatActivity {
 	 */
 	protected boolean isMainActivity() {
 		return false;
+	}
+
+
+	protected int getActionBarSize() {
+		TypedValue typedValue = new TypedValue();
+		int[] textSizeAttr = new int[]{R.attr.actionBarSize};
+		int indexOfAttrTextSize = 0;
+		TypedArray a = obtainStyledAttributes(typedValue.data, textSizeAttr);
+		int actionBarSize = a.getDimensionPixelSize(indexOfAttrTextSize, -1);
+		a.recycle();
+		return actionBarSize;
 	}
 
 	@Override
