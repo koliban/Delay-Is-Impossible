@@ -48,6 +48,91 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:text="@string/tv_alarm_repeating_days"
+            android:textColor="@color/textSecondary"
+            android:textSize="18sp"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/chbox_monday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_toLeftOf="@+id/chbox_tuesday"
+            android:layout_toStartOf="@+id/chbox_tuesday"
+            android:button="@drawable/chbox_monday"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/chbox_tuesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_toLeftOf="@+id/chbox_wednesday"
+            android:layout_toStartOf="@+id/chbox_wednesday"
+            android:button="@drawable/chbox_tuesday"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/chbox_wednesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_toLeftOf="@+id/chbox_thursday"
+            android:layout_toStartOf="@id/chbox_thursday"
+            android:button="@drawable/chbox_wednesday"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/chbox_thursday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_toLeftOf="@+id/chbox_friday"
+            android:layout_toStartOf="@+id/chbox_friday"
+            android:button="@drawable/chbox_thursday"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/chbox_friday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_toLeftOf="@+id/chbox_saturday"
+            android:layout_toStartOf="@id/chbox_saturday"
+            android:button="@drawable/chbox_friday"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/chbox_saturday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_toLeftOf="@+id/chbox_sunday"
+            android:layout_toStartOf="@+id/chbox_sunday"
+            android:button="@drawable/chbox_saturday"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/chbox_sunday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="7dp"
+            android:button="@drawable/chbox_sunday"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorDivider"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:text="@string/tv_stop_alarm_way"
             android:textColor="@color/textSecondary"
             android:textSize="18sp"/>

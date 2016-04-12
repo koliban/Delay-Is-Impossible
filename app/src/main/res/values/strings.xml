@@ -10,6 +10,7 @@
     <string name="tv_alarm_volume">闹钟音量</string>
     <string name="tv_stop_alarm_way">关闭方式</string>
     <string name="tv_alarm_time">闹钟时间</string>
+    <string name="tv_alarm_repeating_days">重复日期</string>
     <string name="tv_supervisor_number">监督人号码</string>
 
     <string name="radio_btn_difficult_text">难</string>
