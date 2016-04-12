@@ -1,4 +1,4 @@
-package com.thefat.lingjunqi.getup;
+package com.thefat.lingjunqi.getup.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import com.thefat.lingjunqi.getup.R;
 
 import java.util.LinkedList;
 

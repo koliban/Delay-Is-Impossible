@@ -1,8 +1,10 @@
-package com.thefat.lingjunqi.getup;
+package com.thefat.lingjunqi.getup.Activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
+
+import com.thefat.lingjunqi.getup.R;
 
 /**
  * @author junqi.ling@gmail.com

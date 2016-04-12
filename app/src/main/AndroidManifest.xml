@@ -10,7 +10,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".AlarmActivity"
+            android:name=".Activity.AlarmActivity"
             android:label="@string/label_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".AlarmPreferencesActivity"/>
+        <activity android:name=".Activity.AlarmPreferencesActivity"/>
 
     </application>
 

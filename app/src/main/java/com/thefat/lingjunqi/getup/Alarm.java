@@ -112,7 +112,7 @@ public class Alarm implements Serializable {
 	/**
 	 * @return the alarmTime(String)
 	 */
-	public String getAlarmNameString() {
+	public String getAlarmTimeString() {
 
 		String time = "";
 		if (alarmTime.get(Calendar.HOUR_OF_DAY) <= 9)

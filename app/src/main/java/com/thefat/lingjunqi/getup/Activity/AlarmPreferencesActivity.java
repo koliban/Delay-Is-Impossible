@@ -1,8 +1,10 @@
-package com.thefat.lingjunqi.getup;
+package com.thefat.lingjunqi.getup.Activity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.thefat.lingjunqi.getup.R;
 
 /**
  * @author junqi.ling@gmail.com
