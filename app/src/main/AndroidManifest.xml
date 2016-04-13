@@ -2,6 +2,12 @@
     package="com.thefat.lingjunqi.getup"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_mine"
@@ -10,19 +16,33 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".Activity.AlarmActivity"
-            android:label="@string/alarm_activity_name">
+            android:name=".activity.AlarmActivity"
+            android:label="@string/label_alarm_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity android:name=".Activity.AlarmPreferencesActivity"
-            android:label="@string/alarm_preferences_activity_name">
-
+        
+        <activity android:name=".activity.AboutActivity">
         </activity>
 
-    </application>
+        <activity android:name=".alert.AlarmAlertActivity"
+                  android:screenOrientation="portrait">
+        </activity>
+        
+        <activity android:name=".activity.AlarmPreferencesActivity"/>
 
+       <service
+           android:icon="@drawable/ic_ring_blue_36dp"
+           android:name=".service.AlarmService"/>
+
+        <receiver android:name=".alert.AlarmAlertBroadcastReceiver"/>
+        <receiver android:name=".service.AlarmServiceBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+    </application>
 </manifest>

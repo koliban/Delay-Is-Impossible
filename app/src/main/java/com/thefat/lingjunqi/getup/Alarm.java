@@ -1,15 +1,14 @@
 package com.thefat.lingjunqi.getup;
 
-import android.annotation.TargetApi;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
-import android.os.Build;
+
+import com.thefat.lingjunqi.getup.alert.AlarmAlertBroadcastReceiver;
 
 import java.io.Serializable;
-import java.lang.annotation.Target;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Comparator;
@@ -21,26 +20,26 @@ import java.util.List;
  */
 public class Alarm implements Serializable {
 
-	public enum Difficulty {
+	public enum Difficulty{
 		EASY,
 		MEDIUM,
 		HARD;
 
 		@Override
 		public String toString() {
-			switch (this.ordinal()) {
+			switch(this.ordinal()){
 				case 0:
-					return "Easy";
+					return "简单";
 				case 1:
-					return "Medium";
+					return "中等";
 				case 2:
-					return "Hard";
+					return "困难";
 			}
 			return super.toString();
 		}
 	}
 
-	public enum Day {
+	public enum Day{
 		SUNDAY,
 		MONDAY,
 		TUESDAY,
@@ -51,66 +50,84 @@ public class Alarm implements Serializable {
 
 		@Override
 		public String toString() {
-			switch (this.ordinal()) {
+			switch(this.ordinal()){
 				case 0:
-					return "Sunday";
+					return "周日";
 				case 1:
-					return "Monday";
+					return "周一";
 				case 2:
-					return "Tuesday";
+					return "周二";
 				case 3:
-					return "Wednesday";
+					return "周三";
 				case 4:
-					return "Thursday";
+					return "周四";
 				case 5:
-					return "Friday";
+					return "周五";
 				case 6:
-					return "Saturday";
+					return "周六";
 			}
 			return super.toString();
 		}
-	}
 
+	}
+	private static final long serialVersionUID = 8699489847426803789L;
 	private int id;
 	private Boolean alarmActive = true;
 	private Calendar alarmTime = Calendar.getInstance();
-	private Day[] days = {Day.MONDAY, Day.TUESDAY, Day.WEDNESDAY, Day.THURSDAY, Day.FRIDAY, Day.SATURDAY, Day.SUNDAY};
+	private Day[] days = {Day.MONDAY,Day.TUESDAY,Day.WEDNESDAY,Day.THURSDAY,Day.FRIDAY,Day.SATURDAY,Day.SUNDAY};
 	private String alarmTonePath = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM).toString();
 	private Boolean vibrate = true;
-	private String alarmName = "Alarm Clock";
+	private String alarmName = "未命名闹钟";
 	private Difficulty difficulty = Difficulty.EASY;
 
 	public Alarm() {
+
 	}
 
+//	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+//		out.defaultWriteObject();
+//		out.writeObject(getAlarmToneUri().getEncodedPath());
+//	}
+
+//	private void readObject(java.io.ObjectInputStream in) throws IOException {
+//		try {
+//			in.defaultReadObject();
+//			this.setAlarmToneUri(Uri.parse(in.readObject().toString()));
+//		} catch (ClassNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+
 	/**
-	 * @return thee alarmActive
+	 * @return the alarmActive
 	 */
 	public Boolean getAlarmActive() {
 		return alarmActive;
 	}
 
 	/**
-	 * @param alarmActive set the alarmActive
+	 * @param alarmActive
+	 *            the alarmActive to set
 	 */
 	public void setAlarmActive(Boolean alarmActive) {
 		this.alarmActive = alarmActive;
 	}
 
 	/**
-	 * @return the alarmTime(Calendar)
+	 * @return the alarmTime
 	 */
 	public Calendar getAlarmTime() {
 		if (alarmTime.before(Calendar.getInstance()))
 			alarmTime.add(Calendar.DAY_OF_MONTH, 1);
-		while (!Arrays.asList(getDays()).contains(Day.values()[alarmTime.get(Calendar.DAY_OF_WEEK) - 1])) {
+		while(!Arrays.asList(getDays()).contains(Day.values()[alarmTime.get(Calendar.DAY_OF_WEEK)-1])){
 			alarmTime.add(Calendar.DAY_OF_MONTH, 1);
 		}
 		return alarmTime;
 	}
 
 	/**
-	 * @return the alarmTime(String)
+	 * @return the alarmTime
 	 */
 	public String getAlarmTimeString() {
 
@@ -128,21 +145,24 @@ public class Alarm implements Serializable {
 	}
 
 	/**
-	 * @param alarmTime(Calendar) set the alarmTime
+	 * @param alarmTime
+	 *            the alarmTime to set
 	 */
 	public void setAlarmTime(Calendar alarmTime) {
 		this.alarmTime = alarmTime;
 	}
 
 	/**
-	 * @param alarmTime(String) set the alarmTime
+	 * @param alarmTime
+	 *            the alarmTime to set
 	 */
 	public void setAlarmTime(String alarmTime) {
 
 		String[] timePieces = alarmTime.split(":");
 
 		Calendar newAlarmTime = Calendar.getInstance();
-		newAlarmTime.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timePieces[0]));
+		newAlarmTime.set(Calendar.HOUR_OF_DAY,
+				Integer.parseInt(timePieces[0]));
 		newAlarmTime.set(Calendar.MINUTE, Integer.parseInt(timePieces[1]));
 		newAlarmTime.set(Calendar.SECOND, 0);
 		setAlarmTime(newAlarmTime);
@@ -155,31 +175,31 @@ public class Alarm implements Serializable {
 		return days;
 	}
 
+
 	public void setDays(Day[] days) {
 		this.days = days;
 	}
 
-	// TODO: 16/4/11  figure it out
-	public void addDay(Day day) {
+	public void addDay(Day day){
 		boolean contains = false;
-		for (Day d : getDays())
-			if (d.equals(day))
+		for(Day d : getDays())
+			if(d.equals(day))
 				contains = true;
-		if (!contains) {
-			List<Day> result = new LinkedList<>();
-			for (Day d : getDays())
+		if(!contains){
+			List<Day> result = new LinkedList<Day>();
+			for(Day d : getDays())
 				result.add(d);
 			result.add(day);
 			setDays(result.toArray(new Day[result.size()]));
 		}
 	}
 
-	//// TODO: 16/4/11 figure it out
 	public void removeDay(Day day) {
-		List<Day> result = new LinkedList<>();
-		for (Day d : getDays())
-			if (!d.equals(day))
-				result.remove(d);
+
+		List<Day> result = new LinkedList<Day>();
+		for(Day d : getDays())
+			if(!d.equals(day))
+				result.add(d);
 		setDays(result.toArray(new Day[result.size()]));
 	}
 
@@ -205,7 +225,8 @@ public class Alarm implements Serializable {
 	}
 
 	/**
-	 * @param vibrate the vibrate to set
+	 * @param vibrate
+	 *            the vibrate to set
 	 */
 	public void setVibrate(Boolean vibrate) {
 		this.vibrate = vibrate;
@@ -219,7 +240,8 @@ public class Alarm implements Serializable {
 	}
 
 	/**
-	 * @param alarmName the alarmName to set
+	 * @param alarmName
+	 *            the alarmName to set
 	 */
 	public void setAlarmName(String alarmName) {
 		this.alarmName = alarmName;
@@ -243,90 +265,75 @@ public class Alarm implements Serializable {
 
 	public String getRepeatDaysString() {
 		StringBuilder daysStringBuilder = new StringBuilder();
-		if (getDays().length == Day.values().length) {
+		if(getDays().length == Day.values().length){
 			daysStringBuilder.append("每天");
-		} else {
+		}else{
 			Arrays.sort(getDays(), new Comparator<Day>() {
 				@Override
 				public int compare(Day lhs, Day rhs) {
+
 					return lhs.ordinal() - rhs.ordinal();
 				}
 			});
-
-			// FIXME: 16/4/11
-			for (Day d : getDays()) {
-				switch (d) {
-					case SUNDAY:
-						daysStringBuilder.append("周日");
-						break;
-					case MONDAY:
-						daysStringBuilder.append("周一");
-						break;
+			// TODO: 16/4/10
+			for(Day d : getDays()){
+				switch(d){
 					case TUESDAY:
-						daysStringBuilder.append("周二");
-						break;
-					case WEDNESDAY:
-						daysStringBuilder.append("周三");
-						break;
 					case THURSDAY:
-						daysStringBuilder.append("周四");
-						break;
-					case FRIDAY:
-						daysStringBuilder.append("周五");
-						break;
-					case SATURDAY:
-						daysStringBuilder.append("周六");
-						break;
+//					daysStringBuilder.append(d.toString().substring(0, 4));
+//					break;
 					default:
+						daysStringBuilder.append(d.toString().substring(0, 3));
 						break;
 				}
 				daysStringBuilder.append(',');
 			}
-			daysStringBuilder.setLength(daysStringBuilder.length() - 1);
+			daysStringBuilder.setLength(daysStringBuilder.length()-1);
 		}
+
 		return daysStringBuilder.toString();
 	}
 
-	// TODO: 16/4/11 setAlarmActive(true)???
-	@TargetApi(19)
 	public void schedule(Context context) {
 		setAlarmActive(true);
 
-		Intent intent = new Intent(context, AlarmAlertBroadcastReceiver.class);
-		intent.putExtra("alarm", this);
-		PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-		if (Build.VERSION.SDK_INT >= 19) {
-			alarmManager.setExact(AlarmManager.RTC_WAKEUP, getAlarmTime().getTimeInMillis(), pendingIntent);
-		} else {
-			alarmManager.set(AlarmManager.RTC_WAKEUP, getAlarmTime().getTimeInMillis(), pendingIntent);
-		}
+		Intent myIntent = new Intent(context, AlarmAlertBroadcastReceiver.class);
+		myIntent.putExtra("alarm", this);
+
+		PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, myIntent,PendingIntent.FLAG_CANCEL_CURRENT);
+
+		AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+
+		alarmManager.setExact(AlarmManager.RTC_WAKEUP, getAlarmTime().getTimeInMillis(), pendingIntent);
 	}
 
 	public String getTimeUntilNextAlarmMessage() {
 		long timeDifference = getAlarmTime().getTimeInMillis() - System.currentTimeMillis();
 		long days = timeDifference / (1000 * 60 * 60 * 24);
-		long hours = timeDifference / (1000 * 60 * 60);
-		long minutes = timeDifference / (1000 * 60) - (days * 24);// TODO: 16/4/11 figure it out
-		long seconds = timeDifference / (1000) - (days * 24 * 60 * 60) - (hours * 60 * 60) - (minutes * 60);
-		String alert = "Alarm will sound in ";
+		long hours = (timeDifference - (1000 * 60 * 60 * 24 * days)) / (1000 * 60 * 60);
+		timeDifference %= 1000 * 60 * 60;
+		long minutes = timeDifference / (1000 * 60);
+		timeDifference %= 1000 * 60;
+		long seconds = timeDifference / 1000;
+		String alert = "闹钟会在 ";
 		if (days > 0) {
 			alert += String.format(
-					"%d days, %d hours, %d minutes and %d seconds", days,
-					hours, minutes, seconds);
+					"%d 天, %d 小时, %d 分钟 ", days,
+					hours, minutes);
 		} else {
 			if (hours > 0) {
-				alert += String.format("%d hours, %d minutes and %d seconds",
-						hours, minutes, seconds);
+				alert += String.format("%d 小时, %d 分钟 ",
+						hours, minutes);
 			} else {
 				if (minutes > 0) {
-					alert += String.format("%d minutes, %d seconds", minutes,
+					alert += String.format("%d 分钟", minutes,
 							seconds);
 				} else {
-					alert += String.format("%d seconds", seconds);
+					alert += String.format("%d 秒", seconds);
 				}
 			}
 		}
+		alert += "后响起";
 		return alert;
 	}
 }

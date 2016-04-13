@@ -1,4 +1,4 @@
-package com.thefat.lingjunqi.getup.Activity;
+package com.thefat.lingjunqi.getup.activity;
 
 import android.content.Intent;
 import android.content.res.TypedArray;
@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.thefat.lingjunqi.getup.service.AlarmServiceBroadcastReceiver;
 import com.thefat.lingjunqi.getup.R;
 
 import java.util.LinkedList;
@@ -193,6 +194,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 			case android.R.id.home:
 				finish();
 				return true;
+			case R.id.about_us:
+				startActivity(AboutActivity.createIntent(getBaseContext()));
 			default:
 				return super.onOptionsItemSelected(item);
 		}
@@ -201,9 +204,13 @@ public abstract class BaseActivity extends AppCompatActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater menuInflater = getMenuInflater();
-		menuInflater.inflate(R.menu.menu, menu);
+		menuInflater.inflate(R.menu.menu_base, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
 
+	protected void callAlarmScheduleService() {
+		Intent mathAlarmServiceIntent = new Intent(this, AlarmServiceBroadcastReceiver.class);
+		sendBroadcast(mathAlarmServiceIntent, null);
+	}
 
 }

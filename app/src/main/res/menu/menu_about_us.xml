@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:appcompat="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/share_us"
+          android:title="@string/share_us"
+          android:icon="@drawable/ic_share_white_24dp"
+          appcompat:showAsAction="always"/>
+</menu>

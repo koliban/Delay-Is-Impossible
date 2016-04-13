@@ -1,15 +1,15 @@
-package com.thefat.lingjunqi.getup.Adapter;
+package com.thefat.lingjunqi.getup.adapter;
 
-import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.thefat.lingjunqi.getup.Activity.AlarmActivity;
+import com.thefat.lingjunqi.getup.activity.AlarmActivity;
 import com.thefat.lingjunqi.getup.Alarm;
-import com.thefat.lingjunqi.getup.Database.Database;
+import com.thefat.lingjunqi.getup.database.Database;
 import com.thefat.lingjunqi.getup.R;
 
 import java.util.ArrayList;
@@ -18,16 +18,20 @@ import java.util.List;
 /**
  * @author junqi.ling@gmail.com
  */
+
 public class AlarmListAdapter extends BaseAdapter {
 
 	private AlarmActivity alarmActivity;
-	private List<Alarm> alarms = new ArrayList<>();
+	private List<Alarm> alarms = new ArrayList<Alarm>();
 
-	public static final String ALARM_FIELDS[] = {Database.COLUMN_ALARM_ACTIVE, Database.COLUMN_ALARM_TIME,
-			Database.COLUMN_ALARM_DAYS};
+	public static final String ALARM_FIELDS[] = { Database.COLUMN_ALARM_ACTIVE,
+			Database.COLUMN_ALARM_TIME, Database.COLUMN_ALARM_DAYS };
 
 	public AlarmListAdapter(AlarmActivity alarmActivity) {
 		this.alarmActivity = alarmActivity;
+
+		//Database.init(alarmActivity);
+		//alarms = Database.getAll();
 	}
 
 	@Override
@@ -46,26 +50,37 @@ public class AlarmListAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		if (convertView == null)
-			convertView = LayoutInflater.from(alarmActivity).inflate(
-					R.layout.item_expandable_list, null);
+	public View getView(int position, View view, ViewGroup viewGroup) {
+		if (null == view)
+			view = LayoutInflater.from(alarmActivity).inflate(
+					R.layout.item_alarm_list, null);
 
 		Alarm alarm = (Alarm) getItem(position);
-		TextView alarmTime = (TextView) convertView.findViewById(R.id.iv_alarm_time);
-		alarmTime.setText(alarm.getAlarmTimeString());
 
-		TextView alarmDays = (TextView) convertView.findViewById(R.id.iv_alarm_days);
-		alarmDays.setText(alarm.getRepeatDaysString());
+		CheckBox checkBox = (CheckBox) view.findViewById(R.id.checkBox_alarm_active);
+		checkBox.setChecked(alarm.getAlarmActive());
+		checkBox.setTag(position);
+		checkBox.setOnClickListener(alarmActivity);
 
-		return convertView;
+		TextView alarmTimeView = (TextView) view
+				.findViewById(R.id.textView_alarm_time);
+		alarmTimeView.setText(alarm.getAlarmTimeString());
+
+
+		TextView alarmDaysView = (TextView) view
+				.findViewById(R.id.textView_alarm_days);
+		alarmDaysView.setText(alarm.getRepeatDaysString());
+
+
+		return view;
 	}
 
-	public List<Alarm> getAlarms() {
+	public List<Alarm> getMathAlarms() {
 		return alarms;
 	}
 
-	public void setAlarms(List<Alarm> alarms) {
+	public void setMathAlarms(List<Alarm> alarms) {
 		this.alarms = alarms;
 	}
+
 }

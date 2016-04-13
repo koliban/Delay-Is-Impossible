@@ -1,9 +1,17 @@
 <resources>
     <string name="app_name">闹钟</string>
-    <string name="more">关于</string>
-    <string name="alarm_activity_name">Delay is Impossible</string>
-    <string name="alarm_preferences_activity_name">设置</string>
+    <string name="more">更多</string>
+    <string name="about_us">关于</string>
+    <string name="share_us">分享</string>
+    <string name="setting_done">设置完成</string>
+    <string name="delete">删除</string>
 
+    <string name="label_alarm_activity">Delay is Impossible</string>
+    <string name="label_alarm_preferences_activity">闹钟设置</string>
+    <string name="label_about_us">关 于</string>
+
+    <string name="tv_app_name">闹  钟</string>
+    <string name="tv_app_version">当前版本 V1.0.0</string>
     <string name="tv_stop_alarm_difficulty">停止闹钟难度</string>
     <string name="tv_alarm_type">闹钟类型</string>
     <string name="tv_alarm_tone">闹钟音乐</string>
@@ -12,7 +20,24 @@
     <string name="tv_alarm_time">闹钟时间</string>
     <string name="tv_alarm_repeating_days">重复日期</string>
     <string name="tv_supervisor_number">监督人号码</string>
+    <string name="tv_rate_us">评价我们</string>
+    <string name="tv_no_alarm">请添加闹钟</string>
+    <string name="tv_feedback">意见反馈</string>
+    <string name="tv_manifesto">拒绝拖延，告别delay</string>
 
+    <string name="_0">0</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="decimal_button_text">,</string>
+    <string name="clear_button_text">Clear</string>
+    <string name="minus_button_text">-</string>
     <string name="radio_btn_difficult_text">难</string>
     <string name="radio_btn_medium_text">中</string>
     <string name="radio_btn_easy_text">易</string>

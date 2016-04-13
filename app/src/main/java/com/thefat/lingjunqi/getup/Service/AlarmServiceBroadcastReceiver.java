@@ -1,4 +1,4 @@
-package com.thefat.lingjunqi.getup;
+package com.thefat.lingjunqi.getup.service;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,9 +7,11 @@ import android.content.Intent;
 /**
  * @author junqi.ling@gmail.com
  */
-public class AlarmAlertBroadcastReceiver extends BroadcastReceiver {
+public class AlarmServiceBroadcastReceiver extends BroadcastReceiver{
+
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		// TODO: 16/4/11
+		Intent serviceIntent = new Intent(context,AlarmService.class);
+		context.startService(serviceIntent);
 	}
 }

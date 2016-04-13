@@ -1,4 +1,4 @@
-package com.thefat.lingjunqi.getup.Database;
+package com.thefat.lingjunqi.getup.database;
 
 import android.content.ContentValues;
 import android.content.Context;

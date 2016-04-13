@@ -4,78 +4,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_repeating_line"
     android:orientation="vertical">
 
-    <com.github.ksoichiro.android.observablescrollview.ObservableScrollView
-        android:id="@+id/scroll"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:scrollbars="none">
-
-        <FrameLayout
-            android:id="@+id/body"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="72dp">
-
-            <ListView
-                android:id="@+id/alarm_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:longClickable="true">
-            </ListView>
-        </FrameLayout>
-    </com.github.ksoichiro.android.observablescrollview.ObservableScrollView>
-
-    <View
-        android:id="@+id/flexible_space"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/colorPrimary"/>
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
-        app:theme="@style/AppTheme"/>
+        android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="72dp">
-
-        <TextView
-            android:id="@+id/title"
+        <ListView
+            android:id="@+id/alarm_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:minHeight="?attr/actionBarSize"
-            android:textColor="@color/WHITE"
-            android:textSize="20sp"/>
+            android:longClickable="true">
+        </ListView>
 
         <LinearLayout
+            android:id="@+id/container_no_alarm"
+            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="130dp"
             android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#00000000"/>
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:src="@drawable/ic_no_alarm"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="72dp"
-                android:background="#00000000"/>
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_marginTop="18dp"
+                android:textSize="18sp"
+                android:textColor="@color/textSecondary"
+                android:text="@string/tv_no_alarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
-    </RelativeLayout>
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btn_add_alarm"
