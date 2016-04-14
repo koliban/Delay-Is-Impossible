@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TableRow
         android:id="@+id/tableRow0"
@@ -12,6 +13,8 @@
             android:id="@+id/textView1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="25sp"
             android:layout_weight="1"
             android:textAppearance="?android:attr/textAppearanceLarge"/>
 
@@ -29,7 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/black"/>
+            android:textColor="@color/colorPrimary"
+            android:textSize="25sp"/>
 
     </TableRow>
 
@@ -42,26 +46,38 @@
         <Button
             android:id="@+id/Button1"
             android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/WHITE"
+            android:elevation="4dp"
             android:tag="1"
-            android:text="@string/_1"/>
+            android:text="@string/_1"
+            android:textColor="@drawable/btn_mathproblem"
+            android:textSize="25sp"/>
 
         <Button
             android:id="@+id/Button2"
             android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/WHITE"
+            android:elevation="4dp"
             android:tag="2"
-            android:text="@string/_2"/>
+            android:text="@string/_2"
+            android:textColor="@drawable/btn_mathproblem"
+            android:textSize="25sp"/>
 
         <Button
             android:id="@+id/Button3"
             android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/WHITE"
+            android:elevation="4dp"
             android:tag="3"
-            android:text="@string/_3"/>
+            android:text="@string/_3"
+            android:textColor="@drawable/btn_mathproblem"
+            android:textSize="25sp"/>
 
     </TableRow>
 
@@ -74,26 +90,38 @@
         <Button
             android:id="@+id/Button4"
             android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/WHITE"
+            android:elevation="4dp"
             android:tag="4"
-            android:text="@string/_4"/>
+            android:text="@string/_4"
+            android:textColor="@drawable/btn_mathproblem"
+            android:textSize="25sp"/>
 
         <Button
             android:id="@+id/Button5"
             android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/WHITE"
+            android:elevation="4dp"
             android:tag="5"
-            android:text="@string/_5"/>
+            android:text="@string/_5"
+            android:textColor="@drawable/btn_mathproblem"
+            android:textSize="25sp"/>
 
         <Button
             android:id="@+id/Button6"
             android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/WHITE"
+            android:elevation="4dp"
             android:tag="6"
-            android:text="@string/_6"/>
+            android:text="@string/_6"
+            android:textColor="@drawable/btn_mathproblem"
+            android:textSize="25sp"/>
 
     </TableRow>
 
@@ -106,26 +134,38 @@
         <Button
             android:id="@+id/Button7"
             android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/WHITE"
+            android:elevation="4dp"
             android:tag="7"
-            android:text="@string/_7"/>
+            android:text="@string/_7"
+            android:textColor="@drawable/btn_mathproblem"
+            android:textSize="25sp"/>
 
         <Button
             android:id="@+id/Button8"
             android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/WHITE"
+            android:elevation="4dp"
             android:tag="8"
-            android:text="@string/_8"/>
+            android:text="@string/_8"
+            android:textColor="@drawable/btn_mathproblem"
+            android:textSize="25sp"/>
 
         <Button
             android:id="@+id/Button9"
             android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/WHITE"
+            android:elevation="4dp"
             android:tag="9"
-            android:text="@string/_9"/>
+            android:text="@string/_9"
+            android:textColor="@drawable/btn_mathproblem"
+            android:textSize="25sp"/>
 
     </TableRow>
 
@@ -138,26 +178,38 @@
         <Button
             android:id="@+id/Button_decimal"
             android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/WHITE"
+            android:elevation="4dp"
             android:tag="."
-            android:text="@string/decimal_button_text"/>
+            android:text="@string/decimal_button_text"
+            android:textColor="@drawable/btn_mathproblem"
+            android:textSize="25sp"/>
 
         <Button
             android:id="@+id/Button0"
             android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/WHITE"
+            android:elevation="4dp"
             android:tag="0"
-            android:text="@string/_0"/>
+            android:text="@string/_0"
+            android:textColor="@drawable/btn_mathproblem"
+            android:textSize="25sp"/>
 
         <Button
             android:id="@+id/Button_minus"
             android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/WHITE"
+            android:elevation="4dp"
             android:tag="-"
-            android:text="@string/minus_button_text"/>
+            android:text="@string/minus_button_text"
+            android:textColor="@drawable/btn_mathproblem"
+            android:textSize="25sp"/>
 
     </TableRow>
 
@@ -169,10 +221,14 @@
         <Button
             android:id="@+id/Button_clear"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/WHITE"
+            android:elevation="4dp"
             android:tag="clear"
-            android:text="@string/clear_button_text"/>
+            android:text="@string/clear_button_text"
+            android:textColor="@drawable/btn_mathproblem"
+            android:textSize="18sp"/>
 
     </TableRow>
 
