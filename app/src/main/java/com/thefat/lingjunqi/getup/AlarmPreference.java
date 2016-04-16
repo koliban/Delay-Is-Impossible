@@ -4,7 +4,7 @@ package com.thefat.lingjunqi.getup;
  * @author junqi.ling@gmail.com
  */
 public class AlarmPreference {
-	public enum Key{
+	public enum Key {
 		ALARM_NAME,
 		ALARM_ACTIVE,
 		ALARM_TIME,
@@ -14,7 +14,7 @@ public class AlarmPreference {
 		ALARM_DIFFICULTY
 	}
 
-	public enum Type{
+	public enum Type {
 		BOOLEAN,
 		INTEGER,
 		STRING,
@@ -31,10 +31,10 @@ public class AlarmPreference {
 	private Type type;
 
 	public AlarmPreference(Key key, Object value, Type type) {
-		this(key,null,null,null, value, type);
+		this(key, null, null, null, value, type);
 	}
 
-	public AlarmPreference(Key key,String title, String summary, String[] options, Object value, Type type) {
+	public AlarmPreference(Key key, String title, String summary, String[] options, Object value, Type type) {
 		setTitle(title);
 		setSummary(summary);
 		setOptions(options);

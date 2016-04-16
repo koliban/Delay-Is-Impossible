@@ -15,7 +15,6 @@ import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.thefat.lingjunqi.getup.Alarm;
@@ -79,19 +78,19 @@ public class AlarmAlertActivity extends Activity implements View.OnClickListener
 		answerView = (TextView) findViewById(R.id.textView2);
 		answerView.setText("= ?");
 
-		((Button) findViewById(R.id.Button0)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button1)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button2)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button3)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button4)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button5)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button6)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button7)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button8)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button9)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button_clear)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button_decimal)).setOnClickListener(this);
-		((Button) findViewById(R.id.Button_minus)).setOnClickListener(this);
+		(findViewById(R.id.Button0)).setOnClickListener(this);
+		(findViewById(R.id.Button1)).setOnClickListener(this);
+		(findViewById(R.id.Button2)).setOnClickListener(this);
+		(findViewById(R.id.Button3)).setOnClickListener(this);
+		(findViewById(R.id.Button4)).setOnClickListener(this);
+		(findViewById(R.id.Button5)).setOnClickListener(this);
+		(findViewById(R.id.Button6)).setOnClickListener(this);
+		(findViewById(R.id.Button7)).setOnClickListener(this);
+		(findViewById(R.id.Button8)).setOnClickListener(this);
+		(findViewById(R.id.Button9)).setOnClickListener(this);
+		(findViewById(R.id.Button_clear)).setOnClickListener(this);
+		(findViewById(R.id.Button_decimal)).setOnClickListener(this);
+		(findViewById(R.id.Button_minus)).setOnClickListener(this);
 
 		TelephonyManager telephonyManager = (TelephonyManager) this
 				.getSystemService(Context.TELEPHONY_SERVICE);
@@ -163,22 +162,12 @@ public class AlarmAlertActivity extends Activity implements View.OnClickListener
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see android.app.Activity#onBackPressed()
-	 */
 	@Override
 	public void onBackPressed() {
 		if (!alarmActive)
 			super.onBackPressed();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see android.app.Activity#onPause()
-	 */
 	@Override
 	protected void onPause() {
 		super.onPause();
@@ -258,7 +247,7 @@ public class AlarmAlertActivity extends Activity implements View.OnClickListener
 	}
 
 	public boolean isAnswerCorrect() {
-		boolean correct = false;
+		boolean correct;
 		try {
 			correct = mathProblem.getAnswer() == Float.parseFloat(answerBuilder
 					.toString());

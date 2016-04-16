@@ -26,7 +26,7 @@ public class AlarmPreferenceListAdapter extends BaseAdapter implements Serializa
 
 	private Context context;
 	private Alarm alarm;
-	private List<AlarmPreference> preferences = new ArrayList<AlarmPreference>();
+	private List<AlarmPreference> preferences = new ArrayList<>();
 	private final String[] repeatDays = {"周日", "周一", "周二", "周三", "周四", "周五", "周六"};
 	private final String[] alarmDifficulties = {"简单", "中等", "困难"};
 

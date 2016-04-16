@@ -38,6 +38,7 @@ public class MathProblem {
 	private int min = 0;
 	private int max = 10;
 
+	//如果没有指定难度则默认设为简单
 	public MathProblem() {
 		this(3);
 	}
