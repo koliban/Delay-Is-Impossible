@@ -133,6 +133,8 @@ public class AlarmPreferenceListAdapter extends BaseAdapter implements Serializa
 				case ALARM_REPEAT:
 					alarm.setDays((Alarm.Day[]) preference.getValue());
 					break;
+				case ALARM_PHONE_NUMBER:
+					alarm.setPhoneNumber((String)preference.getValue());
 			}
 		}
 
@@ -158,6 +160,7 @@ public class AlarmPreferenceListAdapter extends BaseAdapter implements Serializa
 		}
 
 		preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_VIBRATE, "设置振动", null, null, alarm.getVibrate(), AlarmPreference.Type.BOOLEAN));
+		preferences.add(new AlarmPreference(AlarmPreference.Key.ALARM_PHONE_NUMBER,"设置监督人号码",alarm.getPhoneNumber(),null,alarm.getPhoneNumber(),AlarmPreference.Type.STRING));
 	}
 
 	public Context getContext() {

@@ -39,9 +39,6 @@ import java.util.Calendar;
  */
 public class AlarmPreferencesActivity extends BaseActivity implements View.OnClickListener {
 
-	ImageButton deleteButton;
-	TextView okButton;
-	TextView cancelButton;
 	private Alarm alarm;
 	private MediaPlayer mediaPlayer;
 
@@ -116,6 +113,8 @@ public class AlarmPreferencesActivity extends BaseActivity implements View.OnCli
 
 								if (alarmPreference.getKey() == AlarmPreference.Key.ALARM_NAME) {
 									alarm.setAlarmName(alarmPreference.getValue().toString());
+								}else if (alarmPreference.getKey()==AlarmPreference.Key.ALARM_PHONE_NUMBER){
+									alarm.setPhoneNumber(alarmPreference.getValue().toString());
 								}
 
 								alarmPreferenceListAdapter.setMathAlarm(getMathAlarm());

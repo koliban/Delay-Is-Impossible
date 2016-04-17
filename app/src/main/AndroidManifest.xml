@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
 
     <application
         android:allowBackup="true"
@@ -16,6 +17,10 @@
         android:theme="@style/AppTheme">
 
         <activity
+            android:name=".activity.SplashActivity">
+        </activity>
+
+        <activity
             android:name=".activity.AlarmActivity"
             android:label="@string/label_alarm_activity">
             <intent-filter>
@@ -23,24 +28,25 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        
+
         <activity android:name=".activity.AboutActivity">
         </activity>
 
-        <activity android:name=".alert.AlarmAlertActivity"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".alert.AlarmAlertActivity"
+            android:screenOrientation="portrait">
         </activity>
-        
+
         <activity android:name=".activity.AlarmPreferencesActivity"/>
 
-       <service
-           android:icon="@drawable/ic_ring_blue_36dp"
-           android:name=".service.AlarmService"/>
+        <service
+            android:name=".service.AlarmService"
+            android:icon="@drawable/ic_ring_blue_36dp"/>
 
         <receiver android:name=".alert.AlarmAlertBroadcastReceiver"/>
         <receiver android:name=".service.AlarmServiceBroadcastReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
 

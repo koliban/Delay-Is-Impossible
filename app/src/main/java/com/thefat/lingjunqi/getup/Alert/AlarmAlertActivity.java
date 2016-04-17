@@ -7,8 +7,10 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.telephony.PhoneStateListener;
+import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.HapticFeedbackConstants;
@@ -27,6 +29,7 @@ public class AlarmAlertActivity extends Activity implements View.OnClickListener
 
 	private Alarm alarm;
 	private MediaPlayer mediaPlayer;
+	private long DELAY_TIME = 1000*40;
 
 	private StringBuilder answerBuilder = new StringBuilder();
 
@@ -38,6 +41,9 @@ public class AlarmAlertActivity extends Activity implements View.OnClickListener
 	private TextView problemView;
 	private TextView answerView;
 	private String answerString;
+	private Handler mHandler;
+	private Runnable mRunnable;
+	private String mNumber;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +83,17 @@ public class AlarmAlertActivity extends Activity implements View.OnClickListener
 
 		answerView = (TextView) findViewById(R.id.textView2);
 		answerView.setText("= ?");
+
+		mNumber = alarm.getPhoneNumber();
+		mHandler = new Handler();
+		mRunnable = new Runnable() {
+			@Override
+			public void run() {
+				SmsManager smsManager = SmsManager.getDefault();
+				smsManager.sendTextMessage(mNumber,null,"快救我，我被床封印了！",null,null);
+			}
+		};
+		mHandler.postDelayed(mRunnable, DELAY_TIME);
 
 		(findViewById(R.id.Button0)).setOnClickListener(this);
 		(findViewById(R.id.Button1)).setOnClickListener(this);
@@ -192,6 +209,7 @@ public class AlarmAlertActivity extends Activity implements View.OnClickListener
 		} catch (Exception e) {
 
 		}
+		mHandler.removeCallbacks(mRunnable);
 		super.onDestroy();
 	}
 

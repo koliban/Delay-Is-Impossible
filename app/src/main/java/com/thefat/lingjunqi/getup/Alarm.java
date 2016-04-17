@@ -80,6 +80,7 @@ public class Alarm implements Serializable {
 	private Boolean vibrate = true;
 	private String alarmName = "未命名闹钟";
 	private Difficulty difficulty = Difficulty.EASY;
+	private String phoneNumber = "请输入监督人号码";
 
 	public Alarm() {
 
@@ -149,6 +150,14 @@ public class Alarm implements Serializable {
 		newAlarmTime.set(Calendar.MINUTE, Integer.parseInt(timePieces[1]));
 		newAlarmTime.set(Calendar.SECOND, 0);
 		setAlarmTime(newAlarmTime);
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
 	/**
@@ -243,7 +252,6 @@ public class Alarm implements Serializable {
 		this.id = id;
 	}
 
-	// TODO: 16/4/15  Test the function
 	public String getRepeatDaysString() {
 		StringBuilder daysStringBuilder = new StringBuilder();
 		if (getDays().length == Day.values().length) {

@@ -25,7 +25,7 @@ public class Database extends SQLiteOpenHelper {
 	static SQLiteDatabase database = null;
 
 	static final String DATABASE_NAME = "DB";
-	static final int DATABASE_VERSION = 1;
+	static final int DATABASE_VERSION = 2;
 
 	public static final String ALARM_TABLE = "alarm";
 	public static final String COLUMN_ALARM_ID = "_id";
@@ -36,52 +36,54 @@ public class Database extends SQLiteOpenHelper {
 	public static final String COLUMN_ALARM_TONE = "alarm_tone";
 	public static final String COLUMN_ALARM_VIBRATE = "alarm_vibrate";
 	public static final String COLUMN_ALARM_NAME = "alarm_name";
+	public static final String COLUMN_ALARM_PHONE_NAME = "alarm_phone_name";
 
-
-	public static void init(Context context){
-		if (instance==null){
+	public static void init(Context context) {
+		if (instance == null) {
 			instance = new Database(context);
 		}
 	}
 
-	public static SQLiteDatabase getDatabase(){
-		if (database==null){
-			database=instance.getWritableDatabase();
+	public static SQLiteDatabase getDatabase() {
+		if (database == null) {
+			database = instance.getWritableDatabase();
 		}
 		return database;
 	}
 
-	public static void deactivate(){
-		if (database!=null&&database.isOpen()){
+	public static void deactivate() {
+		if (database != null && database.isOpen()) {
 			database.close();
 		}
 		database = null;
 		instance = null;
 	}
 
-	public static long create(Alarm alarm){
+	public static long create(Alarm alarm) {
 		ContentValues cv = new ContentValues();
-		cv.put(COLUMN_ALARM_ACTIVE,alarm.getAlarmActive());
-		cv.put(COLUMN_ALARM_TIME,alarm.getAlarmTimeString());
+		cv.put(COLUMN_ALARM_ACTIVE, alarm.getAlarmActive());
+		cv.put(COLUMN_ALARM_TIME, alarm.getAlarmTimeString());
 
 		try {
-			ByteArrayOutputStream bos =new ByteArrayOutputStream();
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
 			ObjectOutputStream oos = null;
 			oos = new ObjectOutputStream(bos);
 			oos.writeObject(alarm.getDays());
 			byte[] buff = bos.toByteArray();
 
-			cv.put(COLUMN_ALARM_DAYS,buff);
-		}catch (Exception e){
+			cv.put(COLUMN_ALARM_DAYS, buff);
+		} catch (Exception e) {
 
 		}
 		cv.put(COLUMN_ALARM_DIFFICULTY, alarm.getDifficulty().ordinal());
 		cv.put(COLUMN_ALARM_TONE, alarm.getAlarmTonePath());
 		cv.put(COLUMN_ALARM_VIBRATE, alarm.getVibrate());
 		cv.put(COLUMN_ALARM_NAME, alarm.getAlarmName());
+		cv.put(COLUMN_ALARM_PHONE_NAME, alarm.getPhoneNumber());
 
 		return getDatabase().insert(ALARM_TABLE, null, cv);
 	}
+
 	public static int update(Alarm alarm) {
 		ContentValues cv = new ContentValues();
 		cv.put(COLUMN_ALARM_ACTIVE, alarm.getAlarmActive());
@@ -96,31 +98,33 @@ public class Database extends SQLiteOpenHelper {
 
 			cv.put(COLUMN_ALARM_DAYS, buff);
 
-		} catch (Exception e){
+		} catch (Exception e) {
 		}
 
 		cv.put(COLUMN_ALARM_DIFFICULTY, alarm.getDifficulty().ordinal());
 		cv.put(COLUMN_ALARM_TONE, alarm.getAlarmTonePath());
 		cv.put(COLUMN_ALARM_VIBRATE, alarm.getVibrate());
 		cv.put(COLUMN_ALARM_NAME, alarm.getAlarmName());
+		cv.put(COLUMN_ALARM_PHONE_NAME, alarm.getPhoneNumber());
 
 		return getDatabase().update(ALARM_TABLE, cv, "_id=" + alarm.getId(), null);
 	}
-	public static int deleteEntry(Alarm alarm){
+
+	public static int deleteEntry(Alarm alarm) {
 		return deleteEntry(alarm.getId());
 	}
 
-	public static int deleteEntry(int id){
+	public static int deleteEntry(int id) {
 		return getDatabase().delete(ALARM_TABLE, COLUMN_ALARM_ID + "=" + id, null);
 	}
 
-	public static int deleteAll(){
+	public static int deleteAll() {
 		return getDatabase().delete(ALARM_TABLE, "1", null);
 	}
 
 	public static Alarm getAlarm(int id) {
 		// TODO Auto-generated method stub
-		String[] columns = new String[] {
+		String[] columns = new String[]{
 				COLUMN_ALARM_ID,
 				COLUMN_ALARM_ACTIVE,
 				COLUMN_ALARM_TIME,
@@ -128,17 +132,18 @@ public class Database extends SQLiteOpenHelper {
 				COLUMN_ALARM_DIFFICULTY,
 				COLUMN_ALARM_TONE,
 				COLUMN_ALARM_VIBRATE,
-				COLUMN_ALARM_NAME
+				COLUMN_ALARM_NAME,
+				COLUMN_ALARM_PHONE_NAME
 		};
-		Cursor c = getDatabase().query(ALARM_TABLE, columns, COLUMN_ALARM_ID+"="+id, null, null, null,
+		Cursor c = getDatabase().query(ALARM_TABLE, columns, COLUMN_ALARM_ID + "=" + id, null, null, null,
 				null);
 		Alarm alarm = null;
 
-		if(c.moveToFirst()){
+		if (c.moveToFirst()) {
 
-			alarm =  new Alarm();
+			alarm = new Alarm();
 			alarm.setId(c.getInt(1));
-			alarm.setAlarmActive(c.getInt(2)==1);
+			alarm.setAlarmActive(c.getInt(2) == 1);
 			alarm.setAlarmTime(c.getString(3));
 			byte[] repeatDaysBytes = c.getBlob(4);
 
@@ -147,7 +152,7 @@ public class Database extends SQLiteOpenHelper {
 				ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
 				Alarm.Day[] repeatDays;
 				Object object = objectInputStream.readObject();
-				if(object instanceof Alarm.Day[]){
+				if (object instanceof Alarm.Day[]) {
 					repeatDays = (Alarm.Day[]) object;
 					alarm.setDays(repeatDays);
 				}
@@ -161,8 +166,9 @@ public class Database extends SQLiteOpenHelper {
 
 			alarm.setDifficulty(Alarm.Difficulty.values()[c.getInt(5)]);
 			alarm.setAlarmTonePath(c.getString(6));
-			alarm.setVibrate(c.getInt(7)==1);
+			alarm.setVibrate(c.getInt(7) == 1);
 			alarm.setAlarmName(c.getString(8));
+			alarm.setPhoneNumber(c.getString(9));
 		}
 		c.close();
 		return alarm;
@@ -170,7 +176,7 @@ public class Database extends SQLiteOpenHelper {
 
 	public static Cursor getCursor() {
 		// TODO Auto-generated method stub
-		String[] columns = new String[] {
+		String[] columns = new String[]{
 				COLUMN_ALARM_ID,
 				COLUMN_ALARM_ACTIVE,
 				COLUMN_ALARM_TIME,
@@ -178,10 +184,10 @@ public class Database extends SQLiteOpenHelper {
 				COLUMN_ALARM_DIFFICULTY,
 				COLUMN_ALARM_TONE,
 				COLUMN_ALARM_VIBRATE,
-				COLUMN_ALARM_NAME
+				COLUMN_ALARM_NAME,
+				COLUMN_ALARM_PHONE_NAME
 		};
-		return getDatabase().query(ALARM_TABLE, columns, null, null, null, null,
-				null);
+		return getDatabase().query(ALARM_TABLE, columns, null, null, null, null, null);
 	}
 
 	Database(Context context) {
@@ -199,7 +205,8 @@ public class Database extends SQLiteOpenHelper {
 				+ COLUMN_ALARM_DIFFICULTY + " INTEGER NOT NULL, "
 				+ COLUMN_ALARM_TONE + " TEXT NOT NULL, "
 				+ COLUMN_ALARM_VIBRATE + " INTEGER NOT NULL, "
-				+ COLUMN_ALARM_NAME + " TEXT NOT NULL)");
+				+ COLUMN_ALARM_NAME + " TEXT NOT NULL, "
+				+ COLUMN_ALARM_PHONE_NAME + " TEXT NOT NULL)");
 	}
 
 	@Override
@@ -222,6 +229,7 @@ public class Database extends SQLiteOpenHelper {
 				// COLUMN_ALARM_TONE,
 				// COLUMN_ALARM_VIBRATE,
 				// COLUMN_ALARM_NAME
+				// COLUMN_PHONE_NUMBER
 
 				Alarm alarm = new Alarm();
 				alarm.setId(cursor.getInt(0));
@@ -252,6 +260,7 @@ public class Database extends SQLiteOpenHelper {
 				alarm.setAlarmTonePath(cursor.getString(5));
 				alarm.setVibrate(cursor.getInt(6) == 1);
 				alarm.setAlarmName(cursor.getString(7));
+				alarm.setPhoneNumber(cursor.getString(8));
 
 				alarms.add(alarm);
 
