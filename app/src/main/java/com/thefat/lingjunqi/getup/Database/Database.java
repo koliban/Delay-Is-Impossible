@@ -81,6 +81,7 @@ public class Database extends SQLiteOpenHelper {
 		cv.put(COLUMN_ALARM_NAME, alarm.getAlarmName());
 		cv.put(COLUMN_ALARM_PHONE_NAME, alarm.getPhoneNumber());
 
+		//增加
 		return getDatabase().insert(ALARM_TABLE, null, cv);
 	}
 
@@ -107,6 +108,7 @@ public class Database extends SQLiteOpenHelper {
 		cv.put(COLUMN_ALARM_NAME, alarm.getAlarmName());
 		cv.put(COLUMN_ALARM_PHONE_NAME, alarm.getPhoneNumber());
 
+		//更新
 		return getDatabase().update(ALARM_TABLE, cv, "_id=" + alarm.getId(), null);
 	}
 
@@ -115,6 +117,8 @@ public class Database extends SQLiteOpenHelper {
 	}
 
 	public static int deleteEntry(int id) {
+
+		//删除
 		return getDatabase().delete(ALARM_TABLE, COLUMN_ALARM_ID + "=" + id, null);
 	}
 
@@ -123,7 +127,6 @@ public class Database extends SQLiteOpenHelper {
 	}
 
 	public static Alarm getAlarm(int id) {
-		// TODO Auto-generated method stub
 		String[] columns = new String[]{
 				COLUMN_ALARM_ID,
 				COLUMN_ALARM_ACTIVE,
@@ -135,6 +138,8 @@ public class Database extends SQLiteOpenHelper {
 				COLUMN_ALARM_NAME,
 				COLUMN_ALARM_PHONE_NAME
 		};
+
+		//查询
 		Cursor c = getDatabase().query(ALARM_TABLE, columns, COLUMN_ALARM_ID + "=" + id, null, null, null,
 				null);
 		Alarm alarm = null;
@@ -175,7 +180,6 @@ public class Database extends SQLiteOpenHelper {
 	}
 
 	public static Cursor getCursor() {
-		// TODO Auto-generated method stub
 		String[] columns = new String[]{
 				COLUMN_ALARM_ID,
 				COLUMN_ALARM_ACTIVE,
@@ -196,7 +200,6 @@ public class Database extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		// TODO Auto-generated method stub
 		db.execSQL("CREATE TABLE IF NOT EXISTS " + ALARM_TABLE + " ( "
 				+ COLUMN_ALARM_ID + " INTEGER primary key autoincrement, "
 				+ COLUMN_ALARM_ACTIVE + " INTEGER NOT NULL, "

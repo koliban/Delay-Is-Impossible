@@ -29,7 +29,7 @@ public class AlarmAlertActivity extends Activity implements View.OnClickListener
 
 	private Alarm alarm;
 	private MediaPlayer mediaPlayer;
-	private long DELAY_TIME = 1000*40;
+	private long DELAY_TIME = 1000 * 40;
 
 	private StringBuilder answerBuilder = new StringBuilder();
 
@@ -85,15 +85,17 @@ public class AlarmAlertActivity extends Activity implements View.OnClickListener
 		answerView.setText("= ?");
 
 		mNumber = alarm.getPhoneNumber();
-		mHandler = new Handler();
-		mRunnable = new Runnable() {
-			@Override
-			public void run() {
-				SmsManager smsManager = SmsManager.getDefault();
-				smsManager.sendTextMessage(mNumber,null,"快救我，我被床封印了！",null,null);
-			}
-		};
-		mHandler.postDelayed(mRunnable, DELAY_TIME);
+		if (!mNumber.equals("快救我，我被床封印了！")) {
+			mHandler = new Handler();
+			mRunnable = new Runnable() {
+				@Override
+				public void run() {
+					SmsManager smsManager = SmsManager.getDefault();
+					smsManager.sendTextMessage(mNumber, null, "快救我，我被床封印了！", null, null);
+				}
+			};
+			mHandler.postDelayed(mRunnable, DELAY_TIME);
+		}
 
 		(findViewById(R.id.Button0)).setOnClickListener(this);
 		(findViewById(R.id.Button1)).setOnClickListener(this);
